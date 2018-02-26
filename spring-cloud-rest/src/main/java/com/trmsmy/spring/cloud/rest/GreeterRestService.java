@@ -24,6 +24,16 @@ public class GreeterRestService {
 
     @Autowired
     BackendServiceClient serviceClient;
+    
+    @RequestMapping(value = "/ping", produces = "text/plain")
+    public String ping() {
+    	logger.info("I am in Ping Service");
+    	
+    	return "Ping Success" ; 
+    	
+    }
+    
+    
 
     @RequestMapping(value = "/echo", produces = "text/plain")
     public String echo() {
