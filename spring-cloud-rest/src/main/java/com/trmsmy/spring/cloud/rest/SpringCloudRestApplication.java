@@ -10,6 +10,9 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
+import brave.propagation.Propagation.Factory;
+import brave.spring.beans.TracingFactoryBean;
+
 @SpringBootApplication
 @EnableDiscoveryClient
 public class SpringCloudRestApplication {
@@ -18,7 +21,19 @@ public class SpringCloudRestApplication {
 	public RestTemplate restTemplate() {
 		return new RestTemplate();
 	}
+	
 
+	@Bean
+	public Factory propagationFactory() {
+		return brave.propagation.ExtraFieldPropagation.newFactory(brave.propagation.B3Propagation.FACTORY,
+				"x-vcap-request-id", "x-vcap-group-id");
+	}
+
+	@Bean
+	public TracingFactoryBean tracing() {
+		return new TracingFactoryBean();
+	}
+	
 	@Bean
 	public FilterRegistrationBean requestDumperFilter() {
 		FilterRegistrationBean registration = new FilterRegistrationBean();
