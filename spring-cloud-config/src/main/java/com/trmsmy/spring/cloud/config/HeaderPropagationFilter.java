@@ -1,7 +1,6 @@
-package com.trmsmy.spring.cloud.rest;
+package com.trmsmy.spring.cloud.config;
 
 import java.io.IOException;
-import java.util.UUID;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -13,20 +12,35 @@ import org.springframework.cloud.sleuth.instrument.web.TraceFilter;
 import org.springframework.core.annotation.Order;
 import org.springframework.web.filter.GenericFilterBean;
 
+import brave.propagation.ExtraFieldPropagation;
+
 
 
 @Order(TraceFilter.ORDER - 1)
-public class TraceIdInjectorFilter extends GenericFilterBean {
+public class HeaderPropagationFilter extends GenericFilterBean {
 
 	@Override
-	public void doFilter(ServletRequest arg0, ServletResponse arg1, FilterChain arg2)
+	public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain)
 			throws IOException, ServletException {
-		String string = UUID.randomUUID().toString();
-		System.out.println("Adding Header value  = " + string );
-		final HttpServletRequest httpRequest = (HttpServletRequest) arg0;
-		httpRequest.setAttribute("x-vcap-request-id", string);
+
+		final HttpServletRequest httpRequest = (HttpServletRequest) req;
 		
-		arg2.doFilter(arg0, arg1);
+		String br = httpRequest.getHeader("brequestId");
+		String bg = httpRequest.getHeader("bgroupId");
+		String r = httpRequest.getHeader("requestId");
+		String g = httpRequest.getHeader("groupId");
+
+		ExtraFieldPropagation.set("brequestId", br);
+		ExtraFieldPropagation.set("bgroupId", bg);
+		ExtraFieldPropagation.set("requestId", r);
+		ExtraFieldPropagation.set("groupId", g);
+		
+		System.out.println("Filters seen are :" + br);
+		System.out.println("Filters seen are :" + bg);
+		System.out.println("Filters seen are :" + r);
+		System.out.println("Filters seen are :" + g);
+		
+		chain.doFilter(req, resp);
 		
 	}
 
