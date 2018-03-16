@@ -31,17 +31,19 @@ public class SpringCloudRestApplication {
 
 	@Bean
 	public TracingFactoryBean tracing() {
-		return new TracingFactoryBean();
+		TracingFactoryBean tracingFactoryBean = new TracingFactoryBean();
+		tracingFactoryBean.setPropagationFactory(propagationFactory());
+		return tracingFactoryBean;
 	}
 	
-	@Bean
+/*	@Bean
 	public FilterRegistrationBean requestDumperFilter() {
 		FilterRegistrationBean registration = new FilterRegistrationBean();
 		Filter requestDumperFilter = new RequestDumperFilter();
 		registration.setFilter(requestDumperFilter);
 		registration.addUrlPatterns("/*");
 		return registration;
-	}
+	}*/
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringCloudRestApplication.class, args);
