@@ -5,7 +5,7 @@
 
 	<groupId>com.trmsmy.spring.cloud.rest</groupId>
 	<artifactId>spring-cloud-rest</artifactId>
-	<version>0.0.1</version>
+	<version>0.0.2</version>
 	<packaging>jar</packaging>
 
 	<name>spring-cloud-rest</name>
@@ -74,7 +74,7 @@
 				<artifactId>gitflow-maven-plugin</artifactId>
 				<version>1.9.0</version>
 				<configuration>
-					<!-- optional configuration -->
+					<tychoBuild>true</tychoBuild>
 				</configuration>
 			</plugin>
 		</plugins>
