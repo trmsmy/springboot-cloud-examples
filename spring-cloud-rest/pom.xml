@@ -5,7 +5,7 @@
 
 	<groupId>com.trmsmy.spring.cloud.rest</groupId>
 	<artifactId>spring-cloud-rest</artifactId>
-	<version>0.0.2-SNAPSHOT</version>
+	<version>0.0.2-tycho_enable-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>spring-cloud-rest</name>
