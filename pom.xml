@@ -17,6 +17,8 @@
 
 	<modules>
 		<module>spring-cloud-rest</module>
+		<module>spring-cloud-backend</module>
+		<module>spring-cloud-discovery</module>
 		<module>spring-cloud-config</module>
 	</modules>
 
