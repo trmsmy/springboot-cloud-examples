@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
-public class SpringCloudConfigApplication {
+public class SpringCloudBackendApplication {
 
 	@Bean
 	public RequestDumperFilter requestDumperFilter() {
@@ -19,6 +19,6 @@ public class SpringCloudConfigApplication {
 	}
 	
 	public static void main(String[] args) {
-		SpringApplication.run(SpringCloudConfigApplication.class, args);
+		SpringApplication.run(SpringCloudBackendApplication.class, args);
 	}
 }
