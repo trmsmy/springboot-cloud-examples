@@ -3,6 +3,8 @@ package com.trmsmy.spring.cloud.rest;
 import org.apache.catalina.filters.RequestDumperFilter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
@@ -11,7 +13,8 @@ import brave.propagation.ExtraFieldPropagation;
 import brave.propagation.Propagation.Factory;
 
 @SpringBootApplication
-//@EnableDiscoveryClient
+@EnableDiscoveryClient
+@RefreshScope
 public class SpringCloudRestApplication {
 
 	@Bean
