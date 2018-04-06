@@ -13,7 +13,7 @@ import brave.propagation.ExtraFieldPropagation;
 import brave.propagation.Propagation.Factory;
 
 @SpringBootApplication
-@EnableDiscoveryClient
+//@EnableDiscoveryClient
 @RefreshScope
 public class SpringCloudRestApplication {
 

@@ -24,12 +24,15 @@ public class GreeterRestService {
 
     @Autowired
     BackendServiceClient serviceClient;
+
+    @Value("${spring.application.name}")
+	private String appName;
     
     @RequestMapping(value = "/ping", produces = "text/plain")
     public String ping() {
     	logger.info("I am in Ping Service");
     	
-    	return "Ping Success" ; 
+    	return "Ping Success, app " + appName + " is up and running." ; 
     	
     }
     
