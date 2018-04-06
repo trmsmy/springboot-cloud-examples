@@ -1,9 +1,7 @@
 package com.trmsmy.spring.cloud.rest;
 
-import org.apache.catalina.filters.RequestDumperFilter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
@@ -22,10 +20,10 @@ public class SpringCloudRestApplication {
 		return new RestTemplate();
 	}
 
-	@Bean
+	/*@Bean
 	public RequestDumperFilter requestDumperFilter() {
 		return new RequestDumperFilter();
-	}
+	}*/
 	
 	@Bean
 	public Factory propagationFactory() {

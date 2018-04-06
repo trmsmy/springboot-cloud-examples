@@ -35,10 +35,10 @@ public class HeaderPropagationFilter extends GenericFilterBean {
 		ExtraFieldPropagation.set("requestId", r);
 		ExtraFieldPropagation.set("groupId", g);
 		
-		System.out.println("Filters seen are :" + br);
-		System.out.println("Filters seen are :" + bg);
-		System.out.println("Filters seen are :" + r);
-		System.out.println("Filters seen are :" + g);
+		System.out.println("header[brequestId]:" + br);
+		System.out.println("header[bgroupId]:" + bg);
+		System.out.println("header[requestId]:" + r);
+		System.out.println("header[groupId]:" + g);
 		
 		chain.doFilter(req, resp);
 		

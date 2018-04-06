@@ -16,11 +16,8 @@ public class GreeterRestService {
 
     private static final Logger logger = LoggerFactory.getLogger(GreeterRestService.class);
 	
-    @Value("${greeter.name}")
-    String greeter;
-
-    @Value("${message.greeting.template}")
-    String messageTemplate;
+    @Value("${app.mode}")
+    String appMode;
 
     @Autowired
     BackendServiceClient serviceClient;
@@ -32,12 +29,10 @@ public class GreeterRestService {
     public String ping() {
     	logger.info("I am in Ping Service");
     	
-    	return "Ping Success, app " + appName + " is up and running." ; 
+    	return "Ping Success, app " + appName + " is up and running in " + appMode+ " mode." ; 
     	
     }
     
-    
-
     @RequestMapping(value = "/echo", produces = "text/plain")
     public String echo() {
 
